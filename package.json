@@ -1,0 +1,58 @@
+{
+  "name": "sistem-informasi-portal-hajimena",
+  "version": "1.0.0",
+  "description": "Sistem Informasi Portal untuk Perumahan Sejahtera Desa Hajimena",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'Build completed - Static files ready for deployment'",
+    "deploy": "echo 'Ready for deployment to Netlify, Vercel, or GitHub Pages'",
+    "lint": "echo 'No linting configured for vanilla HTML/CSS/JS project'",
+    "test": "echo 'No tests configured for vanilla HTML/CSS/JS project'"
+  },
+  "keywords": [
+    "portal-management",
+    "housing-portal",
+    "real-time-status",
+    "admin-dashboard",
+    "responsive-web",
+    "dark-mode",
+    "indonesia",
+    "perumahan",
+    "hajimena"
+  ],
+  "author": {
+    "name": "Portal Hajimena Team",
+    "email": "dev@hajimena.com",
+    "url": "https://hajimena.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/sistem-informasi-portal-hajimena.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/sistem-informasi-portal-hajimena/issues"
+  },
+  "homepage": "https://github.com/username/sistem-informasi-portal-hajimena#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie <= 11"
+  ],
+  "dependencies": {
+    "@prisma/client": "^6.18.0",
+    "next": "^15.5.6"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/username"
+  },
+  "devDependencies": {
+    "prisma": "^6.18.0"
+  }
+}

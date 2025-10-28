@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Perumahan Sejahtera Desa Hajimena</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Konfigurasi Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#2563eb',
+                        'primary-dark': '#1d4ed8',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    
+    <!-- Admin Navigation -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo dan Nama -->
+                <div class="flex items-center">
+                    <i class="fas fa-user-shield text-primary text-2xl mr-3"></i>
+                    <div>
+                        <h1 class="text-lg font-bold text-gray-900 dark:text-white">Admin Portal</h1>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">Perumahan Sejahtera</p>
+                    </div>
+                </div>
+                
+                <!-- Menu Navigasi Admin -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="dashboard.html" class="text-primary font-medium hover:text-primary-dark transition-colors">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    </a>
+                    <a href="../status-portal.html" target="_blank" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                        <i class="fas fa-eye mr-2"></i>Lihat Status
+                    </a>
+                    <button onclick="showLogs()" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                        <i class="fas fa-history mr-2"></i>Log Aktivitas
+                    </button>
+                </div>
+                
+                <!-- User Info & Logout -->
+                <div class="flex items-center space-x-4">
+                    <!-- Dark Mode Toggle -->
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-moon text-gray-700 dark:text-yellow-400"></i>
+                    </button>
+                    
+                    <!-- User Info -->
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white text-sm"></i>
+                        </div>
+                        <span class="text-sm font-medium text-gray-700 dark:text-gray-300" id="adminUsername">Admin</span>
+                    </div>
+                    
+                    <!-- Logout Button -->
+                    <button onclick="handleLogout()" class="flex items-center px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors text-sm">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-bars text-gray-700 dark:text-gray-300"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="dashboard.html" class="text-primary font-medium hover:text-primary-dark transition-colors py-2">
+                        <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                    </a>
+                    <a href="../status-portal.html" target="_blank" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
+                        <i class="fas fa-eye mr-2"></i>Lihat Status
+                    </a>
+                    <button onclick="showLogs()" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2 text-left">
+                        <i class="fas fa-history mr-2"></i>Log Aktivitas
+                    </button>
+                    <button onclick="handleLogout()" class="text-red-500 hover:text-red-600 transition-colors py-2 text-left">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Header Section -->
+    <section class="bg-gradient-to-r from-primary to-primary-dark text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold mb-2">
+                        <i class="fas fa-tachometer-alt mr-3"></i>Dashboard Admin
+                    </h1>
+                    <p class="opacity-90">Kelola status portal perumahan secara real-time</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm opacity-75">Login sebagai:</p>
+                    <p class="font-semibold" id="adminUsernameHeader">Admin</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quick Stats -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Total Portal -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                            <i class="fas fa-door-open text-blue-600 dark:text-blue-400 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Total Portal</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-white">4</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portal Dibuka -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-green-100 dark:bg-green-900 rounded-lg">
+                            <i class="fas fa-lock-open text-green-600 dark:text-green-400 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Dibuka</p>
+                            <p class="text-2xl font-bold text-green-600 dark:text-green-400" id="openCount">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portal Ditutup -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-red-100 dark:bg-red-900 rounded-lg">
+                            <i class="fas fa-lock text-red-600 dark:text-red-400 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Ditutup</p>
+                            <p class="text-2xl font-bold text-red-600 dark:text-red-400" id="closedCount">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Last Update -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-purple-100 dark:bg-purple-900 rounded-lg">
+                            <i class="fas fa-clock text-purple-600 dark:text-purple-400 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Update Terakhir</p>
+                            <p class="text-sm font-medium text-gray-900 dark:text-white" id="lastUpdate">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portal Control Section -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+                        <i class="fas fa-sliders-h mr-2 text-primary"></i>Kontrol Portal
+                    </h2>
+                    <button onclick="refreshDashboard()" class="flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-sync-alt mr-2"></i>Refresh
+                    </button>
+                </div>
+                
+                <div id="portalControlContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Portal control cards akan dimuat di sini via JavaScript -->
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 animate-pulse">
+                        <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
+                        <div class="h-20 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
+                        <div class="h-10 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 animate-pulse">
+                        <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
+                        <div class="h-20 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
+                        <div class="h-10 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 animate-pulse">
+                        <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
+                        <div class="h-20 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
+                        <div class="h-10 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 animate-pulse">
+                        <div class="h-6 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
+                        <div class="h-20 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
+                        <div class="h-10 bg-gray-300 dark:bg-gray-600 rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quick Actions -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-6">
+                    <i class="fas fa-bolt mr-2 text-primary"></i>Aksi Cepat
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Buka Semua Portal -->
+                    <button onclick="openAllPortals()" class="flex items-center justify-center p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors group">
+                        <i class="fas fa-lock-open text-green-600 dark:text-green-400 text-xl mr-3 group-hover:scale-110 transition-transform"></i>
+                        <div class="text-left">
+                            <p class="font-semibold text-green-800 dark:text-green-300">Buka Semua</p>
+                            <p class="text-xs text-green-600 dark:text-green-400">Buka semua portal</p>
+                        </div>
+                    </button>
+                    
+                    <!-- Tutup Semua Portal -->
+                    <button onclick="closeAllPortals()" class="flex items-center justify-center p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors group">
+                        <i class="fas fa-lock text-red-600 dark:text-red-400 text-xl mr-3 group-hover:scale-110 transition-transform"></i>
+                        <div class="text-left">
+                            <p class="font-semibold text-red-800 dark:text-red-300">Tutup Semua</p>
+                            <p class="text-xs text-red-600 dark:text-red-400">Tutup semua portal</p>
+                        </div>
+                    </button>
+                    
+                    <!-- View Public Page -->
+                    <a href="../status-portal.html" target="_blank" class="flex items-center justify-center p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors group">
+                        <i class="fas fa-external-link-alt text-blue-600 dark:text-blue-400 text-xl mr-3 group-hover:scale-110 transition-transform"></i>
+                        <div class="text-left">
+                            <p class="font-semibold text-blue-800 dark:text-blue-300">Lihat Publik</p>
+                            <p class="text-xs text-blue-600 dark:text-blue-400">Buka halaman publik</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Activity Log Modal -->
+    <div id="logModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-4xl w-full mx-4 max-h-[80vh] overflow-hidden">
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                        <i class="fas fa-history mr-2 text-primary"></i>Log Aktivitas Portal
+                    </h3>
+                    <button onclick="closeLogModal()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="p-6 overflow-y-auto max-h-[60vh]">
+                <div id="logContent" class="space-y-3">
+                    <!-- Log content akan dimuat di sini -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed top-20 right-4 z-50 space-y-2"></div>
+    
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 flex flex-col items-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            <p class="mt-4 text-gray-700 dark:text-gray-300">Memproses...</p>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="../script.js"></script>
+    <script>
+        // Inisialisasi dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cek autentikasi
+            if (!isLoggedIn()) {
+                window.location.href = '../login.html';
+                return;
+            }
+            
+            // Load user info
+            loadUserInfo();
+            
+            // Load portal controls
+            loadPortalControls();
+            
+            // Auto refresh setiap 30 detik
+            setInterval(() => {
+                loadPortalControls();
+                updateStats();
+            }, 30000);
+        });
+        
+        // Load user info
+        function loadUserInfo() {
+            const session = JSON.parse(localStorage.getItem('adminSession') || '{}');
+            const username = session.username || 'Admin';
+            
+            document.getElementById('adminUsername').textContent = username;
+            document.getElementById('adminUsernameHeader').textContent = username;
+        }
+        
+        // Load portal controls
+        function loadPortalControls() {
+            const container = document.getElementById('portalControlContainer');
+            const portals = getPortals();
+            
+            container.innerHTML = portals.map(portal => `
+                <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 border-l-4 ${portal.status === 'buka' ? 'border-green-500' : 'border-red-500'}">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">${portal.name}</h3>
+                        <span class="text-2xl">
+                            ${portal.status === 'buka' ? 
+                                '<i class="fas fa-lock-open text-green-500"></i>' : 
+                                '<i class="fas fa-lock text-red-500"></i>'}
+                        </span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${portal.status === 'buka' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'}">
+                            ${portal.status === 'buka' ? '✅ Dibuka' : '🔒 Ditutup'}
+                        </span>
+                    </div>
+                    
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        Terakhir update: ${formatLastUpdated(portal.lastUpdated)}
+                    </p>
+                    
+                    <div class="flex space-x-2">
+                        <button 
+                            onclick="updatePortalStatus('${portal.id}', 'buka')"
+                            class="flex-1 px-4 py-2 ${portal.status === 'buka' ? 'bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed' : 'bg-green-500 hover:bg-green-600 text-white'} rounded-lg font-medium transition-colors flex items-center justify-center"
+                            ${portal.status === 'buka' ? 'disabled' : ''}
+                        >
+                            <i class="fas fa-lock-open mr-2"></i>Buka
+                        </button>
+                        <button 
+                            onclick="updatePortalStatus('${portal.id}', 'tutup')"
+                            class="flex-1 px-4 py-2 ${portal.status === 'tutup' ? 'bg-gray-300 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed' : 'bg-red-500 hover:bg-red-600 text-white'} rounded-lg font-medium transition-colors flex items-center justify-center"
+                            ${portal.status === 'tutup' ? 'disabled' : ''}
+                        >
+                            <i class="fas fa-lock mr-2"></i>Tutup
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            updateStats();
+        }
+        
+        // Update statistics
+        function updateStats() {
+            const portals = getPortals();
+            const openCount = portals.filter(p => p.status === 'buka').length;
+            const closedCount = portals.filter(p => p.status === 'tutup').length;
+            
+            document.getElementById('openCount').textContent = openCount;
+            document.getElementById('closedCount').textContent = closedCount;
+            document.getElementById('lastUpdate').textContent = formatLastUpdated(portals[0].lastUpdated);
+        }
+        
+        // Update portal status
+        function updatePortalStatus(portalId, newStatus) {
+            showLoading();
+            
+            setTimeout(() => {
+                const portals = getPortals();
+                const portalIndex = portals.findIndex(p => p.id === portalId);
+                
+                if (portalIndex !== -1) {
+                    const oldStatus = portals[portalIndex].status;
+                    portals[portalIndex].status = newStatus;
+                    portals[portalIndex].lastUpdated = new Date().toISOString();
+                    
+                    // Get current admin username
+                    const session = JSON.parse(localStorage.getItem('adminSession') || '{}');
+                    portals[portalIndex].updatedBy = session.username || 'Admin';
+                    
+                    // Save to localStorage
+                    localStorage.setItem('portals', JSON.stringify(portals));
+                    
+                    // Add to log
+                    addActivityLog(portals[portalIndex].name, oldStatus, newStatus, portals[portalIndex].updatedBy);
+                    
+                    // Reload controls
+                    loadPortalControls();
+                    
+                    // Show success message
+                    const action = newStatus === 'buka' ? 'dibuka' : 'ditutup';
+                    showToast(`Portal ${portals[portalIndex].name} berhasil ${action}!`, 'success');
+                }
+                
+                hideLoading();
+            }, 1000);
+        }
+        
+        // Open all portals
+        function openAllPortals() {
+            if (!confirm('Apakah Anda yakin ingin membuka semua portal?')) {
+                return;
+            }
+            
+            showLoading();
+            
+            setTimeout(() => {
+                const portals = getPortals();
+                const session = JSON.parse(localStorage.getItem('adminSession') || '{}');
+                
+                portals.forEach(portal => {
+                    if (portal.status !== 'buka') {
+                        addActivityLog(portal.name, portal.status, 'buka', session.username || 'Admin');
+                        portal.status = 'buka';
+                        portal.lastUpdated = new Date().toISOString();
+                        portal.updatedBy = session.username || 'Admin';
+                    }
+                });
+                
+                localStorage.setItem('portals', JSON.stringify(portals));
+                loadPortalControls();
+                hideLoading();
+                showToast('Semua portal berhasil dibuka!', 'success');
+            }, 1500);
+        }
+        
+        // Close all portals
+        function closeAllPortals() {
+            if (!confirm('Apakah Anda yakin ingin menutup semua portal?')) {
+                return;
+            }
+            
+            showLoading();
+            
+            setTimeout(() => {
+                const portals = getPortals();
+                const session = JSON.parse(localStorage.getItem('adminSession') || '{}');
+                
+                portals.forEach(portal => {
+                    if (portal.status !== 'tutup') {
+                        addActivityLog(portal.name, portal.status, 'tutup', session.username || 'Admin');
+                        portal.status = 'tutup';
+                        portal.lastUpdated = new Date().toISOString();
+                        portal.updatedBy = session.username || 'Admin';
+                    }
+                });
+                
+                localStorage.setItem('portals', JSON.stringify(portals));
+                loadPortalControls();
+                hideLoading();
+                showToast('Semua portal berhasil ditutup!', 'success');
+            }, 1500);
+        }
+        
+        // Refresh dashboard
+        function refreshDashboard() {
+            showToast('Memperbarui dashboard...', 'info');
+            loadPortalControls();
+            showToast('Dashboard berhasil diperbarui!', 'success');
+        }
+        
+        // Show logs
+        function showLogs() {
+            const modal = document.getElementById('logModal');
+            const logContent = document.getElementById('logContent');
+            const logs = getActivityLogs();
+            
+            if (logs.length === 0) {
+                logContent.innerHTML = `
+                    <div class="text-center py-8 text-gray-500 dark:text-gray-400">
+                        <i class="fas fa-inbox text-4xl mb-3"></i>
+                        <p>Belum ada aktivitas yang tercatat</p>
+                    </div>
+                `;
+            } else {
+                logContent.innerHTML = logs.map(log => `
+                    <div class="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                        <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user text-white text-xs"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm font-medium text-gray-900 dark:text-white">
+                                ${log.action}
+                            </p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400">
+                                oleh <span class="font-medium">${log.admin}</span> • ${formatLastUpdated(log.timestamp)}
+                            </p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            modal.classList.remove('hidden');
+        }
+        
+        // Close log modal
+        function closeLogModal() {
+            document.getElementById('logModal').classList.add('hidden');
+        }
+        
+        // Handle logout
+        function handleLogout() {
+            if (confirm('Apakah Anda yakin ingin logout?')) {
+                localStorage.removeItem('adminSession');
+                showToast('Logout berhasil! Mengalihkan ke halaman login...', 'success');
+                setTimeout(() => {
+                    window.location.href = '../login.html';
+                }, 1500);
+            }
+        }
+        
+        // Close modal on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLogModal();
+            }
+        });
+        
+        // Close modal on background click
+        document.getElementById('logModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeLogModal();
+            }
+        });
+    </script>
+</body>
+</html>

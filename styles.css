@@ -1,0 +1,434 @@
+/* 
+ * Sistem Informasi Portal - Perumahan Sejahtera Desa Hajimena
+ * Custom CSS Styles
+ * Dibuat dengan Tailwind CSS dan custom styles tambahan
+ */
+
+/* Animasi kustom */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    40%, 43% {
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+/* Utility classes */
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.4s ease-out;
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+.animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #6b7280;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* Toast notification styles */
+.toast-notification {
+    transform: translateX(400px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.toast-notification.show {
+    transform: translateX(0);
+}
+
+/* Loading spinner overlay */
+.loading-overlay {
+    backdrop-filter: blur(4px);
+}
+
+/* Button hover effects */
+.btn-hover-lift {
+    transition: all 0.2s ease;
+}
+
+.btn-hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-hover-lift:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card hover effects */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Portal status indicator */
+.portal-status-indicator {
+    position: relative;
+}
+
+.portal-status-indicator::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portal-status-indicator.open::before {
+    background: linear-gradient(45deg, #10b981, #34d399);
+    opacity: 0.1;
+}
+
+.portal-status-indicator.closed::before {
+    background: linear-gradient(45deg, #ef4444, #f87171);
+    opacity: 0.1;
+}
+
+/* Mobile menu animation */
+.mobile-menu-enter {
+    animation: slideIn 0.3s ease-out;
+}
+
+.mobile-menu-exit {
+    animation: slideIn 0.3s ease-out reverse;
+}
+
+/* Form validation styles */
+.form-input-error {
+    border-color: #ef4444 !important;
+}
+
+.form-input-success {
+    border-color: #10b981 !important;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.success-message {
+    color: #10b981;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Dark mode transitions */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .print-only {
+        display: block !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .dark {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Responsive text sizes */
+@media (max-width: 640px) {
+    .responsive-text-4xl {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+    
+    .responsive-text-3xl {
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+    }
+    
+    .responsive-text-2xl {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
+/* Focus styles untuk accessibility */
+.focus-ring:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+.focus-ring:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .btn-hover-lift:hover {
+        transform: none;
+        box-shadow: 0 0 0 2px currentColor;
+    }
+    
+    .card-hover:hover {
+        transform: none;
+        box-shadow: 0 0 0 2px currentColor;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .animate-fade-in,
+    .animate-slide-in,
+    .animate-pulse,
+    .animate-spin,
+    .animate-bounce {
+        animation: none !important;
+    }
+}
+
+/* Custom component styles */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status-badge.open {
+    background-color: #10b981;
+    color: white;
+}
+
+.status-badge.closed {
+    background-color: #ef4444;
+    color: white;
+}
+
+.dark .status-badge.open {
+    background-color: #059669;
+}
+
+.dark .status-badge.closed {
+    background-color: #dc2626;
+}
+
+/* Modal styles */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.dark .modal-content {
+    background: #1f2937;
+}
+
+/* Table styles */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table-striped tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.dark .table-striped tbody tr:nth-child(even) {
+    background-color: #374151;
+}
+
+/* Custom checkbox styles */
+.custom-checkbox {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #d1d5db;
+    border-radius: 0.25rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.custom-checkbox:checked {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.custom-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.dark .custom-checkbox {
+    border-color: #4b5563;
+}
+
+/* Loading skeleton styles */
+.skeleton {
+    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+.dark .skeleton {
+    background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+    background-size: 200% 100%;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Gradient text utility */
+.gradient-text {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Glass morphism effect */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}

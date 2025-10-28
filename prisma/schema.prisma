@@ -1,0 +1,86 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Admin users table
+model Admin {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  name      String
+  email     String?  @unique
+  role      String   @default("admin") // admin, super_admin
+  isActive  Boolean  @default(true)
+  lastLogin DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  activityLogs ActivityLog[]
+  cctvConfigs  CCTVConfig[]
+
+  @@map("admins")
+}
+
+// CCTV configuration table
+model CCTVConfig {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  ipAddress   String   @unique
+  port        Int      @default(80)
+  username    String?  @default("admin")
+  password    String?  @default("admin")
+  channel     Int      @default(1)
+  protocol    String   @default("http") // http, https, rtsp
+  isActive    Boolean  @default(true)
+  location    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  createdBy   Admin?   @relation(fields: [createdById], references: [id])
+  createdById String?
+
+  @@map("cctv_configs")
+}
+
+// Activity log table
+model ActivityLog {
+  id          String   @id @default(cuid())
+  action      String   // login, logout, portal_update, cctv_access, admin_create, etc.
+  description String?
+  ipAddress   String?
+  userAgent   String?
+  adminId     String?
+  createdAt   DateTime @default(now())
+
+  // Relations
+  admin       Admin?   @relation(fields: [adminId], references: [id])
+
+  @@map("activity_logs")
+}
+
+// Portal status table (optional - for persistence)
+model PortalStatus {
+  id          String   @id @default(cuid())
+  portalId    String   @unique
+  name        String
+  status      String   // buka, tutup
+  lastUpdated DateTime @default(now())
+  updatedBy   String?
+  createdAt   DateTime @default(now())
+
+  @@map("portal_statuses")
+}

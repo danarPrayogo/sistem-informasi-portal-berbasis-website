@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - Perumahan Sejahtera Desa Hajimena</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Konfigurasi Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#2563eb',
+                        'primary-dark': '#1d4ed8',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo dan Nama -->
+                <div class="flex items-center">
+                    <i class="fas fa-door-open text-primary text-2xl mr-3"></i>
+                    <div>
+                        <h1 class="text-lg font-bold text-gray-900 dark:text-white">Portal Hajimena</h1>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">Perumahan Sejahtera</p>
+                    </div>
+                </div>
+                
+                <!-- Menu Navigasi -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                        <i class="fas fa-home mr-2"></i>Beranda
+                    </a>
+                    <a href="status-portal.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                        <i class="fas fa-gate mr-2"></i>Status Portal
+                    </a>
+                    <a href="login.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                        <i class="fas fa-user-shield mr-2"></i>Login Admin
+                    </a>
+                    <a href="tentang.html" class="text-primary font-medium hover:text-primary-dark transition-colors">
+                        <i class="fas fa-info-circle mr-2"></i>Tentang Kami
+                    </a>
+                </div>
+                
+                <!-- Dark Mode Toggle & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Dark Mode Toggle -->
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-moon text-gray-700 dark:text-yellow-400"></i>
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-bars text-gray-700 dark:text-gray-300"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
+                        <i class="fas fa-home mr-2"></i>Beranda
+                    </a>
+                    <a href="status-portal.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
+                        <i class="fas fa-gate mr-2"></i>Status Portal
+                    </a>
+                    <a href="login.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
+                        <i class="fas fa-user-shield mr-2"></i>Login Admin
+                    </a>
+                    <a href="tentang.html" class="text-primary font-medium hover:text-primary-dark transition-colors py-2">
+                        <i class="fas fa-info-circle mr-2"></i>Tentang Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Header Section -->
+    <section class="bg-gradient-to-r from-primary to-primary-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    <i class="fas fa-info-circle mr-4"></i>Tentang Kami
+                </h1>
+                <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                    Mengenal lebih dekat Perumahan Sejahtera Desa Hajimena
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                        Perumahan Sejahtera Desa Hajimena
+                    </h2>
+                    <div class="space-y-4 text-gray-600 dark:text-gray-300">
+                        <p class="leading-relaxed">
+                            Perumahan Sejahtera Desa Hajimena adalah kompleks perumahan modern yang terletak di heart of Desa Hajimena. 
+                            Didirikan dengan visi menciptakan lingkungan hunian yang aman, nyaman, dan harmonis bagi seluruh warga.
+                        </p>
+                        <p class="leading-relaxed">
+                            Dengan konsep "One Gate System", kami memastikan keamanan dan ketertiban lingkungan melalui pengelolaan 
+                            4 portal utama yang dapat dipantau secara real-time. Sistem portal ini dirancang untuk memberikan kenyamanan 
+                            maksimal bagi warga sekaligus menjaga keamanan lingkungan.
+                        </p>
+                        <p class="leading-relaxed">
+                            Perumahan kami dilengkapi dengan berbagai fasilitas umum seperti taman bermain, area olahraga, dan ruang 
+                            komunitas yang mendukung gaya hidup sehat dan interaksi sosial yang positif antar warga.
+                        </p>
+                    </div>
+                    
+                    <!-- Key Features -->
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-green-600 dark:text-green-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 dark:text-white">Keamanan 24/7</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">System portal terpadu</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-users text-blue-600 dark:text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 dark:text-white">Komunitas Solid</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Warga yang harmonis</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-tree text-purple-600 dark:text-purple-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 dark:text-white">Hijau & Asri</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Lingkungan yang sehat</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-home text-orange-600 dark:text-orange-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 dark:text-white">Fasilitas Lengkap</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Menunjang kebutuhan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Placeholder -->
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-primary/20 to-primary-dark/20 rounded-2xl p-8">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl p-6 text-center">
+                            <i class="fas fa-building text-6xl text-primary mb-4"></i>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                                Perumahan Sejahtera
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                Desa Hajimena
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Location Section -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                    <i class="fas fa-map-marker-alt mr-3 text-primary"></i>Lokasi & Akses
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Strategis dan mudah diakses dari berbagai arah
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Location Info -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">
+                        Informasi Lokasi
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-pin text-primary mt-1"></i>
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white">Alamat Lengkap</p>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    Jl. Sejahtera No. 1, Desa Hajimena, Kecamatan Hajimena, Kabupaten Lampung Tengah, Provinsi Lampung
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-compass text-primary mt-1"></i>
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white">Koordinat GPS</p>
+                                <p class="text-gray-600 dark:text-gray-400">
+                                    Latitude: -4.9313° S | Longitude: 105.2413° E
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-route text-primary mt-1"></i>
+                            <div>
+                                <p class="font-medium text-gray-900 dark:text-white">Aksesibilitas</p>
+                                <ul class="text-gray-600 dark:text-gray-400 space-y-1">
+                                    <li>• 15 menit dari pusat kota</li>
+                                    <li>• 10 menit dari rumah sakit terdekat</li>
+                                    <li>• 5 menit dari pasar tradisional</li>
+                                    <li>• 20 menit dari stasiun kereta api</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Map Placeholder -->
+                <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-8 text-center">
+                    <i class="fas fa-map text-6xl text-gray-400 mb-4"></i>
+                    <p class="text-gray-600 dark:text-gray-400">
+                        Peta lokasi Perumahan Sejahtera Desa Hajimena
+                    </p>
+                    <p class="text-sm text-gray-500 dark:text-gray-500 mt-2">
+                        (Integrasi peta dapat ditambahkan sesuai kebutuhan)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Management Section -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                    <i class="fas fa-users-cog mr-3 text-primary"></i>Pengurus Perumahan
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Tim pengurus yang berdedikasi untuk kemajuan perumahan
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Ketua RT -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        Budi Santoso, S.E.
+                    </h3>
+                    <p class="text-primary font-medium mb-3">Ketua RT 01</p>
+                    <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                        <p class="flex items-center justify-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            +62 812-3456-7890
+                        </p>
+                        <p class="flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            rt01@hajimena.com
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Ketua RW -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-tie text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        Ahmad Wijaya, S.H.
+                    </h3>
+                    <p class="text-primary font-medium mb-3">Ketua RW 03</p>
+                    <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                        <p class="flex items-center justify-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            +62 813-5678-9012
+                        </p>
+                        <p class="flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            rw03@hajimena.com
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Security Coordinator -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        Sutrisno
+                    </h3>
+                    <p class="text-primary font-medium mb-3">Koordinator Keamanan</p>
+                    <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                        <p class="flex items-center justify-center">
+                            <i class="fas fa-phone mr-2"></i>
+                            +62 815-9012-3456
+                        </p>
+                        <p class="flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2"></i>
+                            security@hajimena.com
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">
+                    <i class="fas fa-phone-alt mr-3"></i>Hubungi Kami
+                </h2>
+                <p class="text-xl opacity-90">
+                    Ada pertanyaan atau butuh bantuan? Jangan ragu untuk menghubungi kami
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Emergency Contact -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-exclamation-triangle text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Darurat</h3>
+                    <p class="text-2xl font-bold mb-1">112</p>
+                    <p class="opacity-75">24/7 Emergency</p>
+                </div>
+                
+                <!-- Security Contact -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Keamanan</h3>
+                    <p class="text-2xl font-bold mb-1">+62 815-9012-3456</p>
+                    <p class="opacity-75">Portal & Security</p>
+                </div>
+                
+                <!-- Admin Contact -->
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-building text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Kantor Admin</h3>
+                    <p class="text-2xl font-bold mb-1">+62 721-123456</p>
+                    <p class="opacity-75">Jam kerja: 08:00 - 17:00</p>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="status-portal.html" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+                    <i class="fas fa-gate mr-2"></i>Lihat Status Portal
+                </a>
+                <a href="login.html" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors inline-flex items-center justify-center">
+                    <i class="fas fa-user-shield mr-2"></i>Login Admin
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <i class="fas fa-door-open text-primary text-2xl mr-3"></i>
+                    <h3 class="text-lg font-semibold">Portal Hajimena</h3>
+                </div>
+                <p class="text-gray-400 mb-4">
+                    © 2025 Sistem Informasi Portal – Perumahan Sejahtera Desa Hajimena
+                </p>
+                <div class="flex justify-center space-x-4 text-gray-400">
+                    <span class="text-sm">
+                        <i class="fas fa-code mr-1"></i>
+                        Dibuat dengan <i class="fas fa-heart text-red-500"></i> untuk warga Hajimena
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed top-20 right-4 z-50 space-y-2"></div>
+    
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
