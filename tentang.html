@@ -5,21 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang Kami - Perumahan Sejahtera Desa Hajimena</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Konfigurasi Tailwind -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -39,11 +34,9 @@
 </head>
 <body class="font-inter bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
     
-    <!-- Navigation Bar -->
     <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo dan Nama -->
                 <div class="flex items-center">
                     <i class="fas fa-door-open text-primary text-2xl mr-3"></i>
                     <div>
@@ -52,13 +45,15 @@
                     </div>
                 </div>
                 
-                <!-- Menu Navigasi -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
                         <i class="fas fa-home mr-2"></i>Beranda
                     </a>
                     <a href="status-portal.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
                         <i class="fas fa-gate mr-2"></i>Status Portal
+                    </a>
+                    <a href="cctv.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                        <i class="fas fa-video mr-2"></i>CCTV Livestream
                     </a>
                     <a href="login.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
                         <i class="fas fa-user-shield mr-2"></i>Login Admin
@@ -68,21 +63,17 @@
                     </a>
                 </div>
                 
-                <!-- Dark Mode Toggle & Mobile Menu -->
                 <div class="flex items-center space-x-4">
-                    <!-- Dark Mode Toggle -->
                     <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                         <i class="fas fa-moon text-gray-700 dark:text-yellow-400"></i>
                     </button>
                     
-                    <!-- Mobile Menu Button -->
                     <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
                         <i class="fas fa-bars text-gray-700 dark:text-gray-300"></i>
                     </button>
                 </div>
             </div>
             
-            <!-- Mobile Menu -->
             <div id="mobileMenu" class="hidden md:hidden pb-4">
                 <div class="flex flex-col space-y-2">
                     <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
@@ -90,6 +81,9 @@
                     </a>
                     <a href="status-portal.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
                         <i class="fas fa-gate mr-2"></i>Status Portal
+                    </a>
+                    <a href="cctv.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
+                        <i class="fas fa-video mr-2"></i>CCTV Livestream
                     </a>
                     <a href="login.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
                         <i class="fas fa-user-shield mr-2"></i>Login Admin
@@ -102,7 +96,6 @@
         </div>
     </nav>
     
-    <!-- Header Section -->
     <section class="bg-gradient-to-r from-primary to-primary-dark text-white py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
@@ -116,11 +109,9 @@
         </div>
     </section>
     
-    <!-- About Section -->
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Content -->
                 <div>
                     <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
                         Perumahan Sejahtera Desa Hajimena
@@ -141,7 +132,6 @@
                         </p>
                     </div>
                     
-                    <!-- Key Features -->
                     <div class="mt-8 grid grid-cols-2 gap-4">
                         <div class="flex items-center space-x-3">
                             <div class="w-10 h-10 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center">
@@ -182,7 +172,6 @@
                     </div>
                 </div>
                 
-                <!-- Image Placeholder -->
                 <div class="relative">
                     <div class="bg-gradient-to-br from-primary/20 to-primary-dark/20 rounded-2xl p-8">
                         <div class="bg-white dark:bg-gray-800 rounded-xl p-6 text-center">
@@ -200,7 +189,6 @@
         </div>
     </section>
     
-    <!-- Location Section -->
     <section class="py-16 bg-white dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -213,7 +201,6 @@
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Location Info -->
                 <div>
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">
                         Informasi Lokasi
@@ -224,7 +211,7 @@
                             <div>
                                 <p class="font-medium text-gray-900 dark:text-white">Alamat Lengkap</p>
                                 <p class="text-gray-600 dark:text-gray-400">
-                                    Jl. Sejahtera No. 1, Desa Hajimena, Kecamatan Hajimena, Kabupaten Lampung Tengah, Provinsi Lampung
+                                    Jl. H. Komarudin, Perumahan Sejahtera, Desa Hajimena, Kecamatan Natar, Kabupaten Lampung Selatan, Provinsi Lampung
                                 </p>
                             </div>
                         </div>
@@ -234,7 +221,7 @@
                             <div>
                                 <p class="font-medium text-gray-900 dark:text-white">Koordinat GPS</p>
                                 <p class="text-gray-600 dark:text-gray-400">
-                                    Latitude: -4.9313° S | Longitude: 105.2413° E
+                                    Latitude: -5.34685° S | Longitude: 105.24001° E
                                 </p>
                             </div>
                         </div>
@@ -247,28 +234,25 @@
                                     <li>• 15 menit dari pusat kota</li>
                                     <li>• 10 menit dari rumah sakit terdekat</li>
                                     <li>• 5 menit dari pasar tradisional</li>
-                                    <li>• 20 menit dari stasiun kereta api</li>
+                                    <li>• 10 menit dari Mall terdekat</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Map Placeholder -->
-                <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-8 text-center">
-                    <i class="fas fa-map text-6xl text-gray-400 mb-4"></i>
-                    <p class="text-gray-600 dark:text-gray-400">
-                        Peta lokasi Perumahan Sejahtera Desa Hajimena
-                    </p>
-                    <p class="text-sm text-gray-500 dark:text-gray-500 mt-2">
-                        (Integrasi peta dapat ditambahkan sesuai kebutuhan)
-                    </p>
-                </div>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4887.990913659389!2d105.23730257538722!3d-5.34615741588907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e40c56a23b742c3%3A0x7ea5a172a10e46c5!2sSEJAHTERA!5e1!3m2!1sid!2sid!4v1761714222490!5m2!1sid!2sid" 
+                    class="w-full h-[450px] lg:h-full rounded-xl shadow-md" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
     
-    <!-- Management Section -->
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -280,74 +264,27 @@
                 </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Ketua RT -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
+            <div class=" flex justify-center items-center">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow items-center">
                     <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-user-tie text-white text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                        Budi Santoso, S.E.
+                        Ahmad Sholeh S.Kom
                     </h3>
-                    <p class="text-primary font-medium mb-3">Ketua RT 01</p>
+                    <p class="text-primary font-medium mb-3">Ketua RT 09</p>
                     <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                         <p class="flex items-center justify-center">
                             <i class="fas fa-phone mr-2"></i>
-                            +62 812-3456-7890
-                        </p>
-                        <p class="flex items-center justify-center">
-                            <i class="fas fa-envelope mr-2"></i>
-                            rt01@hajimena.com
+                            +62 822-8161-61661
                         </p>
                     </div>
                 </div>
-                
-                <!-- Ketua RW -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user-tie text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                        Ahmad Wijaya, S.H.
-                    </h3>
-                    <p class="text-primary font-medium mb-3">Ketua RW 03</p>
-                    <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                        <p class="flex items-center justify-center">
-                            <i class="fas fa-phone mr-2"></i>
-                            +62 813-5678-9012
-                        </p>
-                        <p class="flex items-center justify-center">
-                            <i class="fas fa-envelope mr-2"></i>
-                            rw03@hajimena.com
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- Security Coordinator -->
-                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow">
-                    <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-shield-alt text-white text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                        Sutrisno
-                    </h3>
-                    <p class="text-primary font-medium mb-3">Koordinator Keamanan</p>
-                    <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                        <p class="flex items-center justify-center">
-                            <i class="fas fa-phone mr-2"></i>
-                            +62 815-9012-3456
-                        </p>
-                        <p class="flex items-center justify-center">
-                            <i class="fas fa-envelope mr-2"></i>
-                            security@hajimena.com
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Contact Section -->
     <section class="py-16 bg-primary text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -360,38 +297,34 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Emergency Contact -->
                 <div class="text-center">
                     <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-exclamation-triangle text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Darurat</h3>
-                    <p class="text-2xl font-bold mb-1">112</p>
+                    <p class="text-2xl font-bold mb-1">+62 822-8161-61661</p>
                     <p class="opacity-75">24/7 Emergency</p>
                 </div>
                 
-                <!-- Security Contact -->
                 <div class="text-center">
                     <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-shield-alt text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Keamanan</h3>
-                    <p class="text-2xl font-bold mb-1">+62 815-9012-3456</p>
+                    <p class="text-2xl font-bold mb-1">(   -   )</p>
                     <p class="opacity-75">Portal & Security</p>
                 </div>
                 
-                <!-- Admin Contact -->
                 <div class="text-center">
                     <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-building text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Kantor Admin</h3>
-                    <p class="text-2xl font-bold mb-1">+62 721-123456</p>
+                    <h3 class="text-xl font-semibold mb-2"> Admin</h3>
+                    <p class="text-2xl font-bold mb-1">+62 881-3298-588</p>
                     <p class="opacity-75">Jam kerja: 08:00 - 17:00</p>
                 </div>
             </div>
             
-            <!-- Quick Actions -->
             <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="status-portal.html" class="bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
                     <i class="fas fa-gate mr-2"></i>Lihat Status Portal
@@ -403,7 +336,6 @@
         </div>
     </section>
     
-    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
@@ -424,10 +356,8 @@
         </div>
     </footer>
     
-    <!-- Toast Notification Container -->
     <div id="toastContainer" class="fixed top-20 right-4 z-50 space-y-2"></div>
     
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>

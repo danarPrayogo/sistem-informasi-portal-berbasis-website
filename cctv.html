@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCTV Livestream - Portal Hajimena</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Konfigurasi Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#2563eb',
+                        'primary-dark': '#1d4ed8',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo dan Nama -->
+                <div class="flex items-center">
+                    <i class="fas fa-door-open text-primary text-2xl mr-3"></i>
+                    <div>
+                        <h1 class="text-lg font-bold text-gray-900 dark:text-white">Portal Hajimena</h1>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">Perumahan Sejahtera</p>
+                    </div>
+                </div>
+
+                <!-- Menu Navigasi -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                        <i class="fas fa-home mr-2"></i>Beranda
+                    </a>
+                    <a href="status-portal.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                        <i class="fas fa-gate mr-2"></i>Status Portal
+                    </a>
+                    <a href="cctv.html" class="text-primary font-medium hover:text-primary-dark transition-colors">
+                        <i class="fas fa-video mr-2"></i>CCTV Livestream
+                    </a>
+                    <a href="login.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                        <i class="fas fa-user-shield mr-2"></i>Login Admin
+                    </a>
+                    <a href="tentang.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+                        <i class="fas fa-info-circle mr-2"></i>Tentang Kami
+                    </a>
+                </div>
+
+                <!-- Dark Mode Toggle & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Dark Mode Toggle -->
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-moon text-gray-700 dark:text-yellow-400"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuToggle" class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-bars text-gray-700 dark:text-gray-300"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="index.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
+                        <i class="fas fa-home mr-2"></i>Beranda
+                    </a>
+                    <a href="status-portal.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
+                        <i class="fas fa-gate mr-2"></i>Status Portal
+                    </a>
+                    <a href="cctv.html" class="text-primary font-medium hover:text-primary-dark transition-colors py-2">
+                        <i class="fas fa-video mr-2"></i>CCTV Livestream
+                    </a>
+                    <a href="login.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
+                        <i class="fas fa-user-shield mr-2"></i>Login Admin
+                    </a>
+                    <a href="tentang.html" class="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors py-2">
+                        <i class="fas fa-info-circle mr-2"></i>Tentang Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CCTV Livestream Section -->
+    <section class="py-12 bg-white dark:bg-gray-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                    <i class="fas fa-video text-primary mr-3"></i>
+                    CCTV Livestream
+                </h1>
+                <p class="text-gray-600 dark:text-gray-400 text-lg">
+                    Pantau keamanan perumahan secara real-time melalui kamera CCTV
+                </p>
+            </div>
+
+            <!-- CCTV Stream Container -->
+            <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-6 shadow-lg">
+                <div class="aspect-video w-full max-w-4xl mx-auto">
+                    <iframe
+                        id="cctvIframe"
+                        src="https://www.youtube.com/embed/4YeEfMuq8Iw"
+                        title="CCTV Livestream Perumahan Sejahtera"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        class="w-full h-full rounded-lg">
+                    </iframe>
+                </div>
+
+                <!-- Stream Info -->
+                <div class="mt-6 text-center">
+                    <div class="inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
+                        <i class="fas fa-circle text-green-500 mr-2 animate-pulse"></i>
+                        Live Stream Aktif
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 mt-3 text-sm">
+                        Stream diperbarui secara real-time • Kualitas HD tersedia
+                    </p>
+                </div>
+            </div>
+
+            <!-- Admin Settings Section -->
+            <div id="adminSettings" class="mt-8 bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hidden">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+                        <i class="fas fa-cog mr-2 text-primary"></i>Pengaturan CCTV
+                    </h2>
+                    <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                        <i class="fas fa-user-shield mr-2 text-primary"></i>
+                        Mode Admin
+                    </div>
+                </div>
+
+                <form id="cctvSettingsForm" onsubmit="handleCCTVSettings(event)">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="cctvLink" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                <i class="fas fa-link mr-2"></i>Link Embed YouTube CCTV
+                            </label>
+                            <input
+                                type="url"
+                                id="cctvLink"
+                                name="cctvLink"
+                                required
+                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-200"
+                                placeholder="https://www.youtube.com/embed/VIDEO_ID"
+                            >
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                                Masukkan link embed YouTube untuk livestream CCTV
+                            </p>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-4">
+                            <div class="text-sm text-gray-600 dark:text-gray-400">
+                                <p><strong>Format yang benar:</strong> https://www.youtube.com/embed/VIDEO_ID</p>
+                                <p><strong>Contoh:</strong> https://www.youtube.com/embed/4YeEfMuq8Iw</p>
+                            </div>
+                            <button
+                                type="submit"
+                                class="bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+                            >
+                                <i class="fas fa-save mr-2"></i>Simpan Pengaturan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-shield-alt text-primary text-2xl mb-3"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Keamanan 24/7</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Pantau area perumahan kapan saja dengan CCTV yang aktif 24 jam
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-eye text-primary text-2xl mb-3"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Visibilitas Tinggi</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Kamera dengan resolusi tinggi untuk detail yang jelas
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-mobile-alt text-primary text-2xl mb-3"></i>
+                    <h3 class="font-semibold text-gray-900 dark:text-white mb-2">Akses Mudah</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm">
+                        Tonton livestream melalui browser atau aplikasi mobile
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <i class="fas fa-door-open text-primary text-2xl mr-3"></i>
+                    <h3 class="text-lg font-semibold">Portal Hajimena</h3>
+                </div>
+                <p class="text-gray-400 mb-4">
+                    © 2025 Sistem Informasi Portal – Perumahan Sejahtera Desa Hajimena
+                </p>
+                <div class="flex justify-center space-x-4 text-gray-400">
+                    <span class="text-sm">
+                        <i class="fas fa-code mr-1"></i>
+                        Dibuat dengan <i class="fas fa-heart text-red-500"></i> untuk warga Hajimena
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed top-20 right-4 z-50 space-y-2"></div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Inisialisasi halaman CCTV
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load CCTV link dari localStorage
+            loadCCTVLink();
+
+            // Check admin status dan tampilkan settings jika admin
+            checkAdminStatus();
+        });
+
+        // Fungsi untuk memuat link CCTV
+        function loadCCTVLink() {
+            const cctvLink = getCCTVLink();
+            const iframe = document.getElementById('cctvIframe');
+            if (iframe) {
+                iframe.src = cctvLink;
+            }
+        }
+
+        // Fungsi untuk mengecek status admin
+        function checkAdminStatus() {
+            if (isLoggedIn()) {
+                const adminSettings = document.getElementById('adminSettings');
+                const cctvLinkInput = document.getElementById('cctvLink');
+
+                if (adminSettings) {
+                    adminSettings.classList.remove('hidden');
+                }
+
+                // Load current CCTV link ke input field
+                if (cctvLinkInput) {
+                    cctvLinkInput.value = getCCTVLink();
+                }
+            }
+        }
+
+        // Fungsi untuk handle form pengaturan CCTV
+        function handleCCTVSettings(event) {
+            event.preventDefault();
+
+            const cctvLinkInput = document.getElementById('cctvLink');
+            const newLink = cctvLinkInput.value.trim();
+
+            // Validasi URL
+            if (!isValidYouTubeEmbedUrl(newLink)) {
+                showToast('Format link YouTube embed tidak valid!', 'error');
+                cctvLinkInput.focus();
+                return;
+            }
+
+            // Simpan link baru
+            setCCTVLink(newLink);
+
+            // Update iframe
+            loadCCTVLink();
+
+            // Tampilkan pesan sukses
+            showToast('Pengaturan CCTV berhasil disimpan!', 'success');
+
+            // Log aktivitas
+            const admin = getCurrentAdmin();
+            if (admin) {
+                addActivityLog('CCTV Link', 'Updated', 'Updated by ' + admin.username, admin.username);
+            }
+        }
+    </script>
+</body>
+</html>

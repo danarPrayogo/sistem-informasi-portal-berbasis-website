@@ -12,7 +12,8 @@ const STORAGE_KEYS = {
     ADMIN_SESSION: 'adminSession',
     ACTIVITY_LOGS: 'activityLogs',
     DARK_MODE: 'darkMode',
-    REMEMBERED_USERNAME: 'rememberedUsername'
+    REMEMBERED_USERNAME: 'rememberedUsername',
+    CCTV_LINK: 'cctvLink'
 };
 
 // ========== INITIALIZATION ==========
@@ -576,6 +577,31 @@ function logPerformance() {
 // Initialize performance monitoring
 logPerformance();
 
+// ========== CCTV FUNCTIONS ==========
+/**
+ * Get CCTV link
+ */
+function getCCTVLink() {
+    const link = localStorage.getItem(STORAGE_KEYS.CCTV_LINK);
+    return link || 'https://www.youtube.com/embed/4YeEfMuq8Iw'; // Default link
+}
+
+/**
+ * Set CCTV link
+ */
+function setCCTVLink(link) {
+    localStorage.setItem(STORAGE_KEYS.CCTV_LINK, link);
+    return true;
+}
+
+/**
+ * Validate YouTube embed URL
+ */
+function isValidYouTubeEmbedUrl(url) {
+    const youtubeRegex = /^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]+(\?.*)?$/;
+    return youtubeRegex.test(url);
+}
+
 // ========== EXPORT FUNCTIONS FOR GLOBAL USE ==========
 // Make functions globally available
 window.showToast = showToast;
@@ -593,3 +619,6 @@ window.getActivityLogs = getActivityLogs;
 window.copyToClipboard = copyToClipboard;
 window.toggleDarkMode = toggleDarkMode;
 window.removeToast = removeToast;
+window.getCCTVLink = getCCTVLink;
+window.setCCTVLink = setCCTVLink;
+window.isValidYouTubeEmbedUrl = isValidYouTubeEmbedUrl;

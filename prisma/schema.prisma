@@ -29,7 +29,7 @@ model Admin {
   // Relations
   activityLogs ActivityLog[]
   cctvConfigs  CCTVConfig[]
-
+  pengumuman   Pengumuman[]
   @@map("admins")
 }
 
@@ -83,4 +83,26 @@ model PortalStatus {
   createdAt   DateTime @default(now())
 
   @@map("portal_statuses")
+}
+// ... (semua model Anda yang sudah ada di atas) ...
+
+// ===================================================
+// MODEL TAMBAHAN: PENGUMUMAN (UNTUK DILIHAT PUBLIK)
+// Ini adalah feed berita/info yang akan dilihat pengunjung
+// ===================================================
+model Pengumuman {
+  id          String    @id @default(cuid())
+  judul       String
+  isi         String    @db.Text
+  kategori    String    @default("INFO") // Cth: INFO, PENTING, EVENT, MAINTENANCE
+  isPublished Boolean   @default(true) // Admin bisa simpan sbg draft
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relasi ke model Admin Anda yang sudah ada
+  // Dibuat oleh siapa?
+  adminId     String?
+  admin       Admin?    @relation(fields: [adminId], references: [id])
+
+  @@map("pengumuman_publik")
 }
