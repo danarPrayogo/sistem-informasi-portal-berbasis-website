@@ -183,7 +183,7 @@ export default async function DashboardPage() {
             <StatCard icon="fa-door-open" color="blue" title="Total Portal" value={portals.length.toString()} />
             <StatCard icon="fa-lock-open" color="green" title="Dibuka" value={stats.openCount.toString()} />
             <StatCard icon="fa-lock" color="red" title="Ditutup" value={stats.closedCount.toString()} />
-            <StatCard icon="fa-clock" color="purple" title="Update Terakhir" value={stats.lastUpdate.toLocaleTimeString('id-ID')} />
+            <StatCard icon="fa-clock" color="purple" title="Update Terakhir" value={stats.lastUpdate.toLocaleTimeString('id-ID', { timeZone: 'Asia/jakarta'})} />
           </div>
         </div>
       </section>
@@ -216,7 +216,7 @@ export default async function DashboardPage() {
                   </div>
 
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    Terakhir update: {portal.lastUpdated.toLocaleString('id-ID')}
+                    Terakhir update: {portal.lastUpdated.toLocaleString('id-ID', {timeZone: 'Asia/Jakarta'})} oleh {portal.updatedBy}
                   </p>
 
                   <div className="flex space-x-2">
