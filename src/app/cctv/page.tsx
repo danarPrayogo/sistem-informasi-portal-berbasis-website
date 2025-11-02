@@ -1,3 +1,4 @@
+export const revalidate = 0; // Nonaktifkan ISR untuk halaman ini
 import prisma from '@/lib/prisma';
 
 // 2. Fungsi untuk mengambil data dari Database

@@ -141,6 +141,7 @@ async function updateCCTVConfig(formData: FormData) {
   }
 
   revalidatePath('/admin/dashboard');
+  revalidatePath('/cctv');
 }
 
 // --- KOMPONEN HALAMAN UTAMA (JSX) ---
