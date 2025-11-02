@@ -1,108 +1,44 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
-// Admin users table
-model Admin {
-  id        String   @id @default(cuid())
-  username  String   @unique
-  password  String
-  name      String
-  email     String?  @unique
-  role      String   @default("admin") // admin, super_admin
-  isActive  Boolean  @default(true)
-  lastLogin DateTime?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relations
-  activityLogs ActivityLog[]
-  cctvConfigs  CCTVConfig[]
-  pengumuman   Pengumuman[]
-  @@map("admins")
-}
-
-// CCTV configuration table
-model CCTVConfig {
-  id          String   @id @default(cuid())
-  name        String
-  description String?
-  ipAddress   String   @unique
-  port        Int      @default(80)
-  username    String?  @default("admin")
-  password    String?  @default("admin")
-  channel     Int      @default(1)
-  protocol    String   @default("http") // http, https, rtsp
-  isActive    Boolean  @default(true)
-  location    String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  // Relations
-  createdBy   Admin?   @relation(fields: [createdById], references: [id])
-  createdById String?
-
-  @@map("cctv_configs")
-}
-
-// Activity log table
 model ActivityLog {
-  id          String   @id @default(cuid())
-  action      String   // login, logout, portal_update, cctv_access, admin_create, etc.
-  description String?
-  ipAddress   String?
-  userAgent   String?
-  adminId     String?
-  createdAt   DateTime @default(now())
-
-  // Relations
-  admin       Admin?   @relation(fields: [adminId], references: [id])
-
-  @@map("activity_logs")
+  id            String   @id @map("_id")
+  action        String
+  adminUsername String
+  portalId      String?
+  timestamp     DateTime @db.Date
 }
 
-// Portal status table (optional - for persistence)
+model CCTVConfig {
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  url String?
+}
+
 model PortalStatus {
-  id          String   @id @default(cuid())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId // <-- UBAH BARIS INI
+  lastUpdated DateTime @db.Date
   portalId    String   @unique
-  name        String
-  status      String   // buka, tutup
-  lastUpdated DateTime @default(now())
-  updatedBy   String?
-  createdAt   DateTime @default(now())
-
-  @@map("portal_statuses")
+  status      Boolean
+  updatedBy   String
 }
-// ... (semua model Anda yang sudah ada di atas) ...
 
-// ===================================================
-// MODEL TAMBAHAN: PENGUMUMAN (UNTUK DILIHAT PUBLIK)
-// Ini adalah feed berita/info yang akan dilihat pengunjung
-// ===================================================
-model Pengumuman {
-  id          String    @id @default(cuid())
-  judul       String
-  isi         String    @db.Text
-  kategori    String    @default("INFO") // Cth: INFO, PENTING, EVENT, MAINTENANCE
-  isPublished Boolean   @default(true) // Admin bisa simpan sbg draft
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+model User {
+  id       String @id @map("_id")
+  password String
+  username String @unique
+}
 
-  // Relasi ke model Admin Anda yang sudah ada
-  // Dibuat oleh siapa?
-  adminId     String?
-  admin       Admin?    @relation(fields: [adminId], references: [id])
-
-  @@map("pengumuman_publik")
+model Management {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  position String
+  phone    String
+  createdAt DateTime @default(now()) @db.Date
+  updatedAt DateTime @updatedAt @db.Date
 }
