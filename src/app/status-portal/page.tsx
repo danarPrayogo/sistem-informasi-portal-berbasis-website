@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import prisma from '@/lib/prisma';
 
+export const revalidate = 0; // Revalidate halaman setiap 60 detik
 // 2. Fungsi untuk mengambil data dari Database
 // (Ini berjalan di server)
 async function getPortalData() {
