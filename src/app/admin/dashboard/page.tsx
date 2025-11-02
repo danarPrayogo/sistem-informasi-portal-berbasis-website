@@ -74,6 +74,8 @@ async function updatePortalStatus(formData: FormData) {
   }
 
   revalidatePath('/admin/dashboard');
+  revalidatePath('/'); // ✅ Tambahkan ini agar beranda ikut diperbarui
+  revalidatePath('/status-portal'); // ✅ Tambahkan ini juga jika halaman /status-portal menampilkan data portal
 }
 
 async function updateAllPortals(formData: FormData) {
@@ -104,6 +106,8 @@ async function updateAllPortals(formData: FormData) {
   }
 
   revalidatePath('/admin/dashboard');
+  revalidatePath('/'); // ✅ Tambahkan ini agar beranda ikut diperbarui
+  revalidatePath('/status-portal'); // ✅ Tambahkan ini juga
 }
 
 async function updateCCTVConfig(formData: FormData) {
