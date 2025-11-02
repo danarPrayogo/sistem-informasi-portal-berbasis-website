@@ -1,6 +1,3 @@
-# TODO: Update Color Scheme to Modern and Minimalist with Elegant Touch
+# TODO: Sembunyikan Navbar Utama Saat Admin Login
 
-## Tasks
-- [x] Update :root (light mode) color variables in globals.css
-- [x] Update .dark (dark mode) color variables in globals.css
-- [x] Test the color changes by running the development server
+- [x] Modifikasi layout.tsx untuk mengecek session dan menyembunyikan Navigation jika admin sudah login

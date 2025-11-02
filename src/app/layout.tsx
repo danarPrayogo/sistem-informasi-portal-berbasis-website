@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import Script from 'next/script'; // ✅ Tambahan penting untuk Font Awesome
+import { getSession } from '@/lib/auth';
 
 // Konfigurasi Font
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -11,11 +12,13 @@ export const metadata = {
   description: 'Sistem Informasi Portal - Perumahan Sejahtera Desa Hajimena',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const session = await getSession();
+
   return (
     <html lang="id" className={inter.variable}>
       <head>
@@ -27,8 +30,8 @@ export default function RootLayout({
       </head>
 
       <body className="font-inter bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-        {/* ✅ Navbar responsif */}
-        <Navigation />
+        {/* ✅ Navbar responsif - Sembunyikan jika admin sudah login */}
+        {!session && <Navigation />}
 
         {/* ✅ Konten halaman */}
         <main>{children}</main>

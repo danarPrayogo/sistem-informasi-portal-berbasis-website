@@ -277,7 +277,7 @@ export default async function DashboardPage() {
               </div>
               <button
                 type="submit"
-                className="px-6 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium transition-colors flex items-center"
+                className="px-6 py-2 bg-primary hover:bg-primary-dark active:scale-95 text-white rounded-lg font-medium transition-all flex items-center"
               >
                 <i className="fas fa-save mr-2"></i>Simpan Konfigurasi
               </button>
