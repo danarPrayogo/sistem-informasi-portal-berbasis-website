@@ -4,23 +4,35 @@ import prisma from '@/lib/prisma';
 export const revalidate = 0;
 // 2. Fungsi untuk mengambil data dari Database
 // (Ini berjalan di server)
+// 2. Fungsi untuk mengambil data dari Database
+// (Ini berjalan di server)
 async function getQuickPortalStatus() {
   try {
     const portals = await prisma.portalStatus.findMany({
       orderBy: { portalId: 'asc' }, // Urutkan berdasarkan nama/ID
       select: {
         id: true,
-        portalId: true, // Asumsi ini adalah nama portal
+        portalId: true,
         status: true,
         lastUpdated: true,
       },
     });
-    return portals;
+
+    // ✅ Konversi lastUpdated ke zona waktu Asia/Jakarta
+    const portalsWithLocalTime = portals.map((p) => ({
+      ...p,
+      lastUpdated: new Date(
+        new Date(p.lastUpdated).toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })
+      ),
+    }));
+
+    return portalsWithLocalTime;
   } catch (error) {
     console.error('Gagal mengambil status portal:', error);
-    return []; // Kembalikan array kosong jika gagal
+    return [];
   }
 }
+
 
 // 3. Komponen Halaman (React Server Component)
 export default async function HomePage() {
