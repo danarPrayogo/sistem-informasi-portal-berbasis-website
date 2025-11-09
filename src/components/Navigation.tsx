@@ -16,7 +16,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <i className="fas fa-door-open text-primary text-2xl mr-3"></i>
             <div>
-              <h1 className="text-lg font-bold text-gray-900 dark:text-white">Portal Hajimena</h1>
+              <h1 className="text-lg font-bold text-gray-900 dark:text-white">Portal Informasi</h1>
               <p className="text-xs text-gray-600 dark:text-gray-400">Perumahan Sejahtera</p>
             </div>
           </div>

@@ -5,7 +5,7 @@
  */
 
 // ========== GLOBAL VARIABLES ==========
-const APP_NAME = 'Portal Hajimena';
+const APP_NAME = 'Portal Informasi';
 const APP_VERSION = '1.0.0';
 const STORAGE_KEYS = {
     PORTALS: 'portals',

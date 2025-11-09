@@ -8,7 +8,7 @@ import { getSession } from '@/lib/auth';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata = {
-  title: 'Portal Hajimena',
+  title: 'Portal Informasi',
   description: 'Sistem Informasi Portal - Perumahan Sejahtera Desa Hajimena',
 };
 
@@ -42,7 +42,7 @@ export default async function RootLayout({
             <div className="text-center">
               <div className="flex items-center justify-center mb-4">
                 <i className="fas fa-door-open text-primary text-2xl mr-3"></i>
-                <h3 className="text-lg font-semibold">Portal Hajimena</h3>
+                <h3 className="text-lg font-semibold">Portal Informasi</h3>
               </div>
               <p className="text-gray-400 mb-4">
                 © 2025 Sistem Informasi Portal – Perumahan Sejahtera Desa Hajimena

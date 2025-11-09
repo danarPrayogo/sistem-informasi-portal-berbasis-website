@@ -286,7 +286,7 @@ MIT License - feel free to use for personal or commercial projects.
 - **Email:** info@hajimena.com
 
 ### Developer
-- **Nama:** Portal Hajimena Team
+- **Nama:** Portal Informasi Team
 - **Email:** dev@hajimena.com
 
 ---
