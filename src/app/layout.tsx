@@ -36,7 +36,7 @@ export default async function RootLayout({
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center">
                 <div className="flex items-center justify-center mb-4">
-                  <i className="fas fa-door-open text-primary text-2xl mr-3"></i>
+                  <i className="fas fa-door-open text-white text-2xl mr-3"></i>
                   <h3 className="text-lg font-semibold">Portal Informasi</h3>
                 </div>
                 <p className="text-gray-400 mb-4">
