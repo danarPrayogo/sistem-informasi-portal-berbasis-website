@@ -1,13 +1,46 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { ThemeToggle } from './theme-toggle';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isLoggedOut } = useAuth();
+
+  useEffect(() => {
+    console.log('Listening to user-logout event');
+    const handleUserLogout = () => {
+      window.location.reload();
+    };
+
+    window.addEventListener('user-logout', handleUserLogout);
+
+    return () => {
+      window.removeEventListener('user-logout', handleUserLogout);
+    };
+  }, []);
+
+  if (isLoggedOut) {
+    return (
+      <nav className="sticky top-0 z-50 bg-gray-100 dark:bg-gray-900 shadow-md transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <i className="fas fa-door-open text-gray-900 dark:text-white text-2xl mr-3" aria-hidden="true"></i>
+              <div>
+                <h1 className="text-lg font-bold text-gray-800 dark:text-gray-100">Portal Informasi</h1>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Perumahan Sejahtera</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <nav className="sticky top-0 z-50 bg-gray-100 dark:bg-gray-900 shadow-md transition-colors duration-300">
@@ -24,7 +57,7 @@ export default function Navigation() {
 
           {/* Menu Navigasi (Desktop) */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md px-2 py-1 transition-colors" onClick={() => window.location.reload()}>
+            <Link href="/" className="text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md px-2 py-1 transition-colors">
               <span className="fas fa-home mr-2"></span>Beranda
             </Link>
             <Link href="/status-portal" className="text-gray-800 dark:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md px-2 py-1 transition-colors">

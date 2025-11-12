@@ -1,9 +1,15 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function LogoutButton() {
   const router = useRouter();
+
+  const emitLogoutEvent = () => {
+    const event = new CustomEvent('user-logout');
+    window.dispatchEvent(event);
+  };
 
   const handleLogout = async () => {
     try {
@@ -12,6 +18,8 @@ export default function LogoutButton() {
       });
 
       if (response.ok) {
+        emitLogoutEvent();
+        console.log('Logout event emitted');
         router.push('/login');
       } else {
         console.error('Logout failed');
