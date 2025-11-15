@@ -52,7 +52,7 @@ export default async function StatusPortalPage() {
   return (
     <>
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-primary to-primary-dark text-white py-12">
+      <section className="bg-primary text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
             <i className="fas fa-gate mr-3"></i>Status Portal Perumahan

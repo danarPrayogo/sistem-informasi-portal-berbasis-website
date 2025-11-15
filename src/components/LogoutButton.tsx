@@ -20,7 +20,8 @@ export default function LogoutButton() {
       if (response.ok) {
         emitLogoutEvent();
         console.log('Logout event emitted');
-        router.push('/login');
+        // Redirect to home page with force reload to ensure Navigation appears
+        window.location.href = '/';
       } else {
         console.error('Logout failed');
       }
@@ -32,7 +33,7 @@ export default function LogoutButton() {
   return (
     <button
       onClick={handleLogout}
-      className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+      className="flex items-center px-3 py-2 text-sm font-medium text-white hover:text-red-500 transition-colors"
     >
       <i className="fas fa-sign-out-alt mr-2"></i>
       Logout

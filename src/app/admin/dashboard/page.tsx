@@ -159,7 +159,7 @@ export default async function DashboardPage() {
   return (
     <>
       {/* Header Section */}
-      <section className="bg-gradient-to-r from-primary to-primary-dark text-white py-8">
+      <section className="bg-primary text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <div>
